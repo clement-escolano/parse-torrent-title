@@ -1,0 +1,24 @@
+{
+  "name": "parse-torrent-title",
+  "version": "0.1.0",
+  "description": "Parse torrent title to extract useful information",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/clement-escolano/parse-torrent-title.git"
+  },
+  "homepage": "https://github.com/clement-escolano/parse-torrent-title#readme",
+  "author": "Clément Escolano <clement.escolano@icloud.com>",
+  "license": "MIT",
+  "engines": {
+    "node": ">=4"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.3.0"
+  }
+}
