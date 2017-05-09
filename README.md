@@ -8,7 +8,7 @@ You can install it using npm:
 ```bash
 npm install parse-torrent-title
 ```
-You should use Node 4.0 or higher to use this package.
+You should use Node 6.0 or higher to use this package.
 
 ## Usage
 

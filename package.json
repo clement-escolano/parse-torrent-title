@@ -15,7 +15,7 @@
   "author": "Clément Escolano <clement.escolano@icloud.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=4"
+    "node": ">=6"
   },
   "devDependencies": {
     "chai": "^3.5.0",
