@@ -1,0 +1,24 @@
+language: node_js
+
+node_js:
+  - node
+  - 6
+  - 4
+
+sudo: false
+
+cache:
+  yarn: true
+  directories:
+  - node_modules
+
+matrix:
+  include:
+    - script: yarn lint
+      node_js: node
+
+script:
+  - yarn test
+
+os:
+  - linux
