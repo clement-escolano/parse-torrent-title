@@ -21,5 +21,10 @@ describe("Parsing episode", () => {
         const releaseName = " Anubis saison 01 episode 38 tvrip FR";
         expect(parse(releaseName)).to.deep.include({ episode: 38 });
     });
+
+    it("should detect episode when written as such shortened", () => {
+        const releaseName = " Le Monde Incroyable de Gumball - Saison 5 Ep 14 - L'extérieur";
+        expect(parse(releaseName)).to.deep.include({ episode: 14 });
+    });
 });
 
