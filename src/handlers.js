@@ -39,4 +39,6 @@ exports.addDefaults = (parser) => {
             }
         }
     });
+    // Group
+    parser.addHandler("group", /- ?([^\-. ]+)$/);
 };
