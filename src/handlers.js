@@ -20,4 +20,11 @@ exports.addDefaults = (parser) => {
     parser.addHandler("container", /MKV|AVI|MP4/i, { type: "lowercase" });
     // Source
     parser.addHandler("source", /hdtv|bluray|(?:b[dr]|dvd|hd|tv)rip|web-?(?:dl|rip)|dvd|ppv/i, { type: "lowercase" });
+    // Codec
+    parser.addHandler("codec", /dvix|mpeg2|divx|xvid|[xh][-. ]?26[45]|avc|hevc/i, { type: "lowercase" });
+    parser.addHandler(({result}) => {
+        if (result.codec) {
+            result.codec = result.codec.replace(/[ .-]/, '');
+        }
+    })
 };
