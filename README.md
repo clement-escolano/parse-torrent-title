@@ -1,5 +1,7 @@
 # parse-torrent-title
 
+[![Build Status](https://travis-ci.org/clement-escolano/parse-torrent-title.svg?branch=master)](https://travis-ci.org/clement-escolano/parse-torrent-title)
+
 This package helps you extract information from a torrent name such as language, resolution and codec.
 
 ## Installation
