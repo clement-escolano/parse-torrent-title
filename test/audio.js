@@ -36,5 +36,10 @@ describe("Parsing audio", () => {
         const releaseName = "Retroactive 1997 BluRay 1080p AC-3 HEVC-d3g";
         expect(parse(releaseName)).to.deep.include({ audio: "ac3" });
     });
+
+    it("should detect the mp3 audio correctly", () => {
+        const releaseName = "Tempete 2016-TrueFRENCH-TVrip-H264-mp3";
+        expect(parse(releaseName)).to.deep.include({ audio: "mp3" });
+    });
 });
 

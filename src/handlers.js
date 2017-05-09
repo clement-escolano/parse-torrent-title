@@ -34,7 +34,7 @@ exports.addDefaults = (/** @type Parser */ parser) => {
         }
     });
     // Audio
-    parser.addHandler("audio", /MP3|FLAC|Atmos|DTS(?:-HD)?|TrueHD|(AAC)(?:[. ]?2[. ]0)?/, { type: "lowercase" });
+    parser.addHandler("audio", /MP3|mp3|FLAC|Atmos|DTS(?:-HD)?|TrueHD|(AAC)(?:[. ]?2[. ]0)?/, { type: "lowercase" });
     parser.addHandler("audio", /Dual[- ]Audio|DD5[. ]?1|(AC-?3)(?:\.5\.1)?/i, { type: "lowercase" });
     parser.addHandler(({ result }) => {
         if (result.audio) {
