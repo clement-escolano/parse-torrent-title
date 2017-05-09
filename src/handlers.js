@@ -49,4 +49,14 @@ exports.addDefaults = (/** @type Parser */ parser) => {
     parser.addHandler("episode", /S[0-9]{1,2}E([0-9]{1,2})/i, { type: "integer" });
     parser.addHandler("episode", /[0-9]{1,2}x([0-9]{1,2})/, { type: "integer" });
     parser.addHandler("episode", /[ée]pisode[. _\-]?([0-9]{1,3})/i, { type: "integer" });
+    // Language
+    parser.addHandler("language", /\bRUS\b/i, { type: "lowercase"});
+    parser.addHandler("language", /\bNL\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bFLEMISH\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bGERMAN\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bDUBBED\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bITA(?:LIAN)?\b/, { type: "lowercase" });
+    parser.addHandler("language", /\b(?:TRUE)?FR(?:ENCH)?|True[Ff]rench\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bVOST(?:(?:F(?:R)?)|A)?|SUBFRENCH\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bMULTi(?:Lang|-VF2)?\b/i, { type: "lowercase" });
 };
