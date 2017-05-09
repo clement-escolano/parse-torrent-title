@@ -48,11 +48,11 @@ exports.addDefaults = (/** @type Parser */ parser) => {
     // Group
     parser.addHandler("group", /- ?([^\-. ]+)$/);
     // Season
-    parser.addHandler("season", /S([0-9]{1,2})E[0-9]{1,2}/i, { type: "integer" });
+    parser.addHandler("season", /S([0-9]{1,2}) ?E[0-9]{1,2}/i, { type: "integer" });
     parser.addHandler("season", /([0-9]{1,2})x[0-9]{1,2}/, { type: "integer" });
     parser.addHandler("season", /(?:Saison|Season)[. _\-]?([0-9]{1,2})/i, { type: "integer" });
     // Episode
-    parser.addHandler("episode", /S[0-9]{1,2}E([0-9]{1,2})/i, { type: "integer" });
+    parser.addHandler("episode", /S[0-9]{1,2} ?E([0-9]{1,2})/i, { type: "integer" });
     parser.addHandler("episode", /[0-9]{1,2}x([0-9]{1,2})/, { type: "integer" });
     parser.addHandler("episode", /[ée]p(?:isode)?[. _\-]?([0-9]{1,3})/i, { type: "integer" });
     // Language

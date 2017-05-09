@@ -12,6 +12,11 @@ describe("Parsing episode", () => {
         expect(parse(releaseName)).to.deep.include({ episode: 1 });
     });
 
+    it("should detect regular episode with a space between", () => {
+        const releaseName = "Dragon Ball Super S01 E23 French 1080p HDTV H264-Kesni";
+        expect(parse(releaseName)).to.deep.include({ episode: 23 });
+    });
+
     it("should detect episode with SxEE format correctly", () => {
         const releaseName = "Doctor.Who.2005.8x11.Dark.Water.720p.HDTV.x264-FoV";
         expect(parse(releaseName)).to.deep.include({ episode: 11 });
