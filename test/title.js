@@ -4,7 +4,7 @@ const parse = require("../index").parse;
 describe("Parsing title", () => {
     it("should return the title", () => {
         const releaseName = "La famille bélier";
-        expect(parse(releaseName)).to.deep.include({ title: "La famille bélier"});
+        expect(parse(releaseName)).to.deep.include({ title: "La famille bélier" });
     });
 
     it("should remove dots", () => {

@@ -4,7 +4,7 @@
   "description": "Parse torrent title to extract useful information",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint",
+    "lint": "eslint .",
     "test": "mocha"
   },
   "repository": {
@@ -19,6 +19,28 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "eslint-config-eslint": "^4.0.0",
     "mocha": "^3.3.0"
+  },
+  "eslintConfig": {
+    "extends": "eslint",
+    "env": {
+      "es6": true,
+      "mocha": true,
+      "node": true
+    },
+    "rules": {
+      "comma-dangle": [
+        "error",
+        "only-multiline"
+      ],
+      "newline-after-var": "off",
+      "require-jsdoc": "off",
+      "strict": [
+        "error",
+        "never"
+      ]
+    }
   }
 }

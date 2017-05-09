@@ -20,7 +20,7 @@ function createHandlerFromRegExp(name, regExp, options) {
     } else if (options.type.toLowerCase() === "lowercase") {
         transformer = input => input.toLowerCase();
     } else if (options.type.toLowerCase().substr(0, 4) === "bool") {
-        transformer = input => true;
+        transformer = () => true;
     } else if (options.type.toLowerCase().substr(0, 3) === "int") {
         transformer = input => parseInt(input, 10);
     } else {
@@ -29,7 +29,7 @@ function createHandlerFromRegExp(name, regExp, options) {
 
     return ({ title, result }) => {
         if (result[name] && options.skipIfAlreadyFound) {
-            return;
+            return null;
         }
 
         const match = title.match(regExp);
@@ -39,18 +39,22 @@ function createHandlerFromRegExp(name, regExp, options) {
             result[name] = transformer(cleanMatch || rawMatch);
             return match.index;
         }
-    }
+
+        return null;
+    };
 }
 
 function cleanTitle(rawTitle) {
-    if (rawTitle.indexOf(" ") === -1 && rawTitle.indexOf(".") !== -1) {
-        rawTitle = rawTitle.replace(/\./g, " ");
+    let cleanedTitle = rawTitle;
+
+    if (cleanedTitle.indexOf(" ") === -1 && cleanedTitle.indexOf(".") !== -1) {
+        cleanedTitle = cleanedTitle.replace(/\./g, " ");
     }
 
-    rawTitle = rawTitle.replace(/_/g, " ");
-    rawTitle = rawTitle.replace(/([(_]|- )$/, "").trim();
+    cleanedTitle = cleanedTitle.replace(/_/g, " ");
+    cleanedTitle = cleanedTitle.replace(/([(_]|- )$/, "").trim();
 
-    return rawTitle;
+    return cleanedTitle;
 }
 
 class Parser {
@@ -60,15 +64,21 @@ class Parser {
     }
 
     addHandler(handlerName, handler, options) {
+
         if (typeof handler === "undefined" && typeof handlerName === "function") {
+
             // If no name is provided and a function handler is directly given
             handler = handlerName;
             handlerName = "Unknown handler";
+
         } else if (typeof handlerName === "string" && handler instanceof RegExp) {
-            options = extendOptions(options);
+
             // If the handler provided is a regular expression
+            options = extendOptions(options);
             handler = createHandlerFromRegExp(handlerName, handler, options);
+
         } else if (typeof handler !== "function") {
+
             // If the handler is neither a function or a regular expression, throw an error
             throw new Error(`Handler for ${handlerName} should be a RegExp or a function. Got: ${typeof handler}`);
         }
@@ -81,7 +91,7 @@ class Parser {
         let endOfTitle = title.length;
 
         for (const handler of this.handlers) {
-            const matchIndex = handler({ title: title, result });
+            const matchIndex = handler({ title, result });
             if (matchIndex && matchIndex < endOfTitle) {
                 endOfTitle = matchIndex;
             }
