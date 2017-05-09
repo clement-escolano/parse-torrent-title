@@ -16,6 +16,8 @@ exports.addDefaults = (/** @type Parser */ parser) => {
     parser.addHandler("repack", /REPACK|RERIP/, { type: "boolean" });
     // Retail
     parser.addHandler("retail", /\bRetail\b/i, { type: "boolean" });
+    // Remastered
+    parser.addHandler("remastered", /\bRemaster(?:ed)?\b/i, { type: "boolean" });
     // Region
     parser.addHandler("region", /R[0-9]/);
     // Container
