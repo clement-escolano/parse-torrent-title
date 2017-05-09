@@ -27,6 +27,11 @@ describe("Parsing language", () => {
         expect(parse(releaseName)).to.deep.include({ language: "truefrench" });
     });
 
+    it("should detect the vff language correctly", () => {
+        const releaseName = "After Earth 2013 VFF BDrip x264 YJ";
+        expect(parse(releaseName)).to.deep.include({ language: "vff" });
+    });
+
     it("should detect the french language correctly", () => {
         const releaseName = "127.Heures.FRENCH.DVDRip.AC3.XViD-DVDFR";
         expect(parse(releaseName)).to.deep.include({ language: "french" });
