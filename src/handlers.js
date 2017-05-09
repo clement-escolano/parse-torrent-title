@@ -1,4 +1,4 @@
-exports.addDefaults = (parser) => {
+exports.addDefaults = (/** @type Parser */ parser) => {
     // Year
     parser.addHandler("year", /(?!^)[(\[]?((?:19[0-9]|20[012])[0-9])[)\]]?/, { type: "integer" });
     // Resolution
@@ -30,7 +30,7 @@ exports.addDefaults = (parser) => {
     // Audio
     parser.addHandler("audio", /MP3|FLAC|Atmos|DTS(?:-HD)?|TrueHD|(AAC)(?:[. ]?2[. ]0)?/, { type: "lowercase" });
     parser.addHandler("audio", /Dual[- ]Audio|DD5[. ]?1|(AC-?3)(?:\.5\.1)?/i, { type: "lowercase" });
-    parser.addHandler(({result}) => {
+    parser.addHandler(({ result }) => {
         if (result.audio) {
             if (result.audio.substr(0, 3) === "dd5") {
                 result.audio = "dd5.1";
@@ -41,4 +41,8 @@ exports.addDefaults = (parser) => {
     });
     // Group
     parser.addHandler("group", /- ?([^\-. ]+)$/);
+    // Season
+    parser.addHandler("season", /S([0-9]{1,2})E[0-9]{1,2}/i, { type: "integer" });
+    parser.addHandler("season", /([0-9]{1,2})x[0-9]{1,2}/, { type: "integer" });
+    parser.addHandler("season", /(?:Saison|Season)[. _\-]?([0-9]{1,2})/i, { type: "integer" });
 };
