@@ -63,6 +63,6 @@ exports.addDefaults = (/** @type Parser */ parser) => {
     parser.addHandler("language", /\bDUBBED\b/, { type: "lowercase" });
     parser.addHandler("language", /\bITA(?:LIAN)?\b/, { type: "lowercase" });
     parser.addHandler("language", /\b(?:TRUE)?FR(?:ENCH)?|True[Ff]rench\b/, { type: "lowercase" });
-    parser.addHandler("language", /\bVOST(?:(?:F(?:R)?)|A)?|SUBFRENCH\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bVOST(?:(?:F(?:R)?)|A)?|SUBFRENCH\b/i, { type: "lowercase" });
     parser.addHandler("language", /\bMULTi(?:Lang|-VF2)?\b/i, { type: "lowercase" });
 };

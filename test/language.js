@@ -32,8 +32,8 @@ describe("Parsing language", () => {
         expect(parse(releaseName)).to.deep.include({ language: "french" });
     });
 
-    it("should detect the vostfr language correctly", () => {
-        const releaseName = "La Famille Tenenbaum 2001 BRRip 720p VOSTFR x264 AAC - KiNGDOM";
+    it("should detect the vostfr language with lowercase correctly", () => {
+        const releaseName = "Color.Of.Night.Unrated.DC.VostFR.BRrip.x264";
         expect(parse(releaseName)).to.deep.include({ language: "vostfr" });
     });
 
