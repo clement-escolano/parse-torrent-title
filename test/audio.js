@@ -22,7 +22,7 @@ describe("Parsing audio", () => {
         expect(parse(releaseName)).to.deep.include({ audio: "aac" });
     });
 
-    it("should detect the Mpeg2 audio correctly", () => {
+    it("should detect the dd5 audio correctly", () => {
         const releaseName = "Jimmy Kimmel 2017 05 03 720p HDTV DD5 1 MPEG2-CTL";
         expect(parse(releaseName)).to.deep.include({ audio: "dd5.1" });
     });
