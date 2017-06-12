@@ -17,7 +17,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("hardcoded", /HC|HARDCODED/, { type: "boolean" });
 
     // Proper
-    parser.addHandler("proper", /(?:REAL.)?PROPER/, { type: "boolean" });
+    parser.addHandler("proper", /(?:REAL\.)?PROPER/, { type: "boolean" });
 
     // Repack
     parser.addHandler("repack", /REPACK|RERIP/, { type: "boolean" });
@@ -41,16 +41,16 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("source", /hdtv|bluray|(?:b[dr]|dvd|hd|tv)rip|web-?(?:dl|rip)|dvd|ppv/i, { type: "lowercase" });
 
     // Codec
-    parser.addHandler("codec", /dvix|mpeg2|divx|xvid|[xh][-. ]?26[45]|avc|hevc/i, { type: "lowercase" });
+    parser.addHandler("codec", /dvix|mpeg2|divx|xvid|[xh][-\. ]?26[45]|avc|hevc/i, { type: "lowercase" });
     parser.addHandler(({ result }) => {
         if (result.codec) {
-            result.codec = result.codec.replace(/[ .-]/, "");
+            result.codec = result.codec.replace(/[ \.-]/, "");
         }
     });
 
     // Audio
-    parser.addHandler("audio", /MP3|mp3|FLAC|Atmos|DTS(?:-HD)?|TrueHD|(AAC)(?:[. ]?2[. ]0)?/, { type: "lowercase" });
-    parser.addHandler("audio", /Dual[- ]Audio|DD5[. ]?1|(AC-?3)(?:\.5\.1)?/i, { type: "lowercase" });
+    parser.addHandler("audio", /MP3|mp3|FLAC|Atmos|DTS(?:-HD)?|TrueHD|(AAC)(?:[\. ]?2[\. ]0)?/, { type: "lowercase" });
+    parser.addHandler("audio", /Dual[- ]Audio|DD5[\. ]?1|(AC-?3)(?:\.5\.1)?/i, { type: "lowercase" });
     parser.addHandler(({ result }) => {
         if (result.audio) {
             if (result.audio.substr(0, 3) === "dd5") {
@@ -62,17 +62,17 @@ exports.addDefaults = /** @type Parser */ parser => {
     });
 
     // Group
-    parser.addHandler("group", /- ?([^\-. ]+)$/);
+    parser.addHandler("group", /- ?([^\-\. ]+)$/);
 
     // Season
     parser.addHandler("season", /S([0-9]{1,2}) ?E[0-9]{1,2}/i, { type: "integer" });
     parser.addHandler("season", /([0-9]{1,2})x[0-9]{1,2}/, { type: "integer" });
-    parser.addHandler("season", /(?:Saison|Season)[. _-]?([0-9]{1,2})/i, { type: "integer" });
+    parser.addHandler("season", /(?:Saison|Season)[\. _-]?([0-9]{1,2})/i, { type: "integer" });
 
     // Episode
     parser.addHandler("episode", /S[0-9]{1,2} ?E([0-9]{1,2})/i, { type: "integer" });
     parser.addHandler("episode", /[0-9]{1,2}x([0-9]{1,2})/, { type: "integer" });
-    parser.addHandler("episode", /[ée]p(?:isode)?[. _-]?([0-9]{1,3})/i, { type: "integer" });
+    parser.addHandler("episode", /[ée]p(?:isode)?[\. _-]?([0-9]{1,3})/i, { type: "integer" });
 
     // Language
     parser.addHandler("language", /\bRUS\b/i, { type: "lowercase" });
