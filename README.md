@@ -47,6 +47,17 @@ console.log(information.part); // 1
 If you want to keep only a part of the matched regular expression, you should use capturing groups
 [explained here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp). 
 
+For regular expressions, the following options are available:
+
+* `skipIfAlreadyFound` (default to `true`) which will skip the regular expression if a previous handler for the same
+information already found something.
+* `type` (default to `string`)which indicates what is the expected output of the regular expression.
+It can be:
+  * `string`: does nothing
+  * `integer`: convert the matching part into an integer
+  * `lowercase`: convert the matching part to lowercase
+  * `boolean`: convert to true if there is a matching part 
+
 ### Handlers
 
 A handler is a function with the title and the resulting information as parameters.
@@ -72,17 +83,18 @@ console.log(information2.isHarryPotterRelated); // true
 ## Multiple parsers
 
 You may want several different parsers within the same project.
-To do that, you can create new parsers simply:
+To do that, you can simply create new parsers:
 ```javascript
-const Parser = require("parse-torrent-title").Parser;
+const { Parser } = require("parse-torrent-title");
 const parser = new Parser();
 const anotherParser = new Parser();
 ```
 
+By default, a freshly created parser has no handler.
 If you want to add default handlers to a parser, you can do so using the specific method:
 ```javascript
-const ptt = require("parse-torrent-title");
-const parser = new ptt.Parser();
-ptt.addDefaults(parser); // parser is now ready
+const { Parser, addDefaults } = require("parse-torrent-title");
+const parser = new Parser();
+addDefaults(parser); // parser is now ready
 ```
 
