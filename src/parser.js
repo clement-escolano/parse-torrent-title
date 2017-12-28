@@ -27,7 +27,7 @@ function createHandlerFromRegExp(name, regExp, options) {
         transformer = input => input;
     }
 
-    return ({ title, result }) => {
+    function handler({ title, result }) {
         if (result[name] && options.skipIfAlreadyFound) {
             return null;
         }
@@ -41,7 +41,11 @@ function createHandlerFromRegExp(name, regExp, options) {
         }
 
         return null;
-    };
+    }
+
+    handler.handlerName = name;
+
+    return handler;
 }
 
 function cleanTitle(rawTitle) {
@@ -68,6 +72,7 @@ class Parser {
 
             // If no name is provided and a function handler is directly given
             handler = handlerName;
+            handler.handlerName = "unknown";
 
         } else if (typeof handlerName === "string" && handler instanceof RegExp) {
 
@@ -75,7 +80,12 @@ class Parser {
             options = extendOptions(options);
             handler = createHandlerFromRegExp(handlerName, handler, options);
 
-        } else if (typeof handler !== "function") {
+        } else if (typeof handler === "function") {
+
+            // If the handler is a function
+            handler.handlerName = handlerName;
+
+        } else {
 
             // If the handler is neither a function nor a regular expression, throw an error
             throw new Error(`Handler for ${handlerName} should be a RegExp or a function. Got: ${typeof handler}`);
