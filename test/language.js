@@ -46,5 +46,10 @@ describe("Parsing language", () => {
         const releaseName = "Le Labyrinthe 2014 Multi-VF2 1080p BluRay x264-PopHD";
         expect(parse(releaseName)).to.deep.include({ language: "multi-vf2" });
     });
+
+    it("should detect the VFI language correctly", () => {
+        const releaseName = "Maman, j'ai raté l'avion 1990 VFI 1080p BluRay DTS x265-HTG";
+        expect(parse(releaseName)).to.deep.include({ language: "vfi" });
+    });
 });
 

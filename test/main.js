@@ -106,7 +106,7 @@ describe("Random releases", () => {
         });
     });
 
-    it("Maman, j'ai raté l'avion 1990 VFI 1080p BluRay DTS x265-HTG ", () => {
+    it("Maman, j'ai raté l'avion 1990 VFI 1080p BluRay DTS x265-HTG", () => {
         const releaseName = "Maman, j'ai raté l'avion 1990 VFI 1080p BluRay DTS x265-HTG";
         expect(parse(releaseName)).to.deep.equal({
             title: "Maman, j'ai raté l'avion",
@@ -114,6 +114,7 @@ describe("Random releases", () => {
             year: 1990,
             audio: "dts",
             resolution: "1080p",
+            language: "vfi",
             codec: "x265",
             group: "HTG",
         });
