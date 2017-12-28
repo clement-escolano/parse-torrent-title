@@ -105,4 +105,17 @@ describe("Random releases", () => {
             group: "TBW1973",
         });
     });
+
+    it("Maman, j'ai raté l'avion 1990 VFI 1080p BluRay DTS x265-HTG ", () => {
+        const releaseName = "Maman, j'ai raté l'avion 1990 VFI 1080p BluRay DTS x265-HTG";
+        expect(parse(releaseName)).to.deep.equal({
+            title: "Maman, j'ai raté l'avion",
+            source: "bluray",
+            year: 1990,
+            audio: "dts",
+            resolution: "1080p",
+            codec: "x265",
+            group: "HTG",
+        });
+    });
 });
