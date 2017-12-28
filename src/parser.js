@@ -64,12 +64,10 @@ class Parser {
     }
 
     addHandler(handlerName, handler, options) {
-
         if (typeof handler === "undefined" && typeof handlerName === "function") {
 
             // If no name is provided and a function handler is directly given
             handler = handlerName;
-            handlerName = "Unknown handler";
 
         } else if (typeof handlerName === "string" && handler instanceof RegExp) {
 
@@ -79,8 +77,9 @@ class Parser {
 
         } else if (typeof handler !== "function") {
 
-            // If the handler is neither a function or a regular expression, throw an error
+            // If the handler is neither a function nor a regular expression, throw an error
             throw new Error(`Handler for ${handlerName} should be a RegExp or a function. Got: ${typeof handler}`);
+
         }
 
         this.handlers.push(handler);
