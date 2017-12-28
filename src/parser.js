@@ -7,7 +7,7 @@ function extendOptions(options) {
     };
 
     options.skipIfAlreadyFound = options.skipIfAlreadyFound || defaultOptions.skipIfAlreadyFound;
-    options.multipleParts = options.multipleParts || defaultOptions.multipleParts;
+    options.type = options.type || defaultOptions.type;
 
     return options;
 }
