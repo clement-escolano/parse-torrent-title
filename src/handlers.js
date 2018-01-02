@@ -85,4 +85,16 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("language", /\bTruefrench|VF(?:[FI])\b/i, { type: "lowercase" });
     parser.addHandler("language", /\bVOST(?:(?:F(?:R)?)|A)?|SUBFRENCH\b/i, { type: "lowercase" });
     parser.addHandler("language", /\bMULTi(?:Lang|-VF2)?\b/i, { type: "lowercase" });
+
+    // Quality
+    parser.addHandler("quality", /\b(?:HD)?CAM\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\b(?:HD)TS\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\b(?:HD)?Rip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bBRRip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bBDRip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\b(?:HD)?TVRip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bTC\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bPPVRip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bR5\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bVHSSCR\b/i, { type: "lowercase" });
 };
