@@ -92,9 +92,14 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("quality", /\b(?:HD\-?)?Rip\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bBRRip\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bBDRip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bDVDRip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bDVDscr\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\b(?:HD\-?)?TVRip\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bTC\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bPPVRip\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bR5\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bVHSSCR\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bBluray\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bWEB\-?DL\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\bWEB\-?Rip\b/i, { type: "lowercase" });
 };
