@@ -89,7 +89,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     // Quality
     parser.addHandler("quality", /\b(?:HD)?CAM\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\b(?:HD)?TS\b/i, { type: "lowercase" });
-    parser.addHandler("quality", /\b(?:HD)??Rip\b/i, { type: "lowercase" });
+    parser.addHandler("quality", /\b(?:HD)?Rip\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bBRRip\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\bBDRip\b/i, { type: "lowercase" });
     parser.addHandler("quality", /\b(?:HD)?TVRip\b/i, { type: "lowercase" });
