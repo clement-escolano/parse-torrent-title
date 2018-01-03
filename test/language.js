@@ -51,5 +51,10 @@ describe("Parsing language", () => {
         const releaseName = "Maman, j'ai raté l'avion 1990 VFI 1080p BluRay DTS x265-HTG";
         expect(parse(releaseName)).to.deep.include({ language: "vfi" });
     });
+
+    it("should detect the italian language correctly", () => {
+        const releaseName = "South.Park.S21E10.iTALiAN.FiNAL.AHDTV.x264-NTROPiC";
+        expect(parse(releaseName)).to.deep.include({ language: "italian" });
+    });
 });
 
