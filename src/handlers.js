@@ -39,7 +39,9 @@ exports.addDefaults = /** @type Parser */ parser => {
 
     // Source
     parser.addHandler("source", /\b(?:HD\-?)?CAM\b/i, { type: "lowercase" });
-    parser.addHandler("source", /\b(?:HD\-?)?TS\b/i, { type: "lowercase" });
+    parser.addHandler("source", /\b(?:HD\-?)?T(?:ELE)?S(?:YNC)?\b/i, {
+        type: "lowercase",
+    });
     parser.addHandler("source", /\b(?:HD\-?)?Rip\b/i, { type: "lowercase" });
     parser.addHandler("source", /\bBRRip\b/i, { type: "lowercase" });
     parser.addHandler("source", /\bBDRip\b/i, { type: "lowercase" });
