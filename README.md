@@ -51,12 +51,13 @@ For regular expressions, the following options are available:
 
 * `skipIfAlreadyFound` (default to `true`) which will skip the regular expression if a previous handler for the same
 information already found something.
-* `type` (default to `string`)which indicates what is the expected output of the regular expression.
+* `type` (default to `string`) which indicates what is the expected output of the regular expression.
 It can be:
   * `string`: does nothing
   * `integer`: convert the matching part into an integer
   * `lowercase`: convert the matching part to lowercase
-  * `boolean`: convert to true if there is a matching part 
+  * `boolean`: convert to true if there is a matching part
+* `value` (default to undefined) which, if defined, set the specified value instead of the matching part as the result
 
 ### Handlers
 

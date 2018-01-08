@@ -49,17 +49,11 @@ exports.addDefaults = /** @type Parser */ parser => {
     });
 
     // Audio
-    parser.addHandler("audio", /MP3|mp3|FLAC|Atmos|DTS(?:-HD)?|TrueHD|(AAC)(?:[. ]?2[. ]0)?/, { type: "lowercase" });
-    parser.addHandler("audio", /Dual[- ]Audio|DD5[. ]?1|(AC-?3)(?:\.5\.1)?/i, { type: "lowercase" });
-    parser.addHandler("audio", ({ result }) => {
-        if (result.audio) {
-            if (result.audio.substr(0, 3) === "dd5") {
-                result.audio = "dd5.1";
-            } else if (result.audio.substr(0, 2) === "ac") {
-                result.audio = "ac3";
-            }
-        }
-    });
+    parser.addHandler("audio", /MP3|mp3|FLAC|Atmos|DTS(?:-HD)?|TrueHD/, { type: "lowercase" });
+    parser.addHandler("audio", /Dual[- ]Audio/i, { type: "lowercase" });
+    parser.addHandler("audio", /AC-?3(?:\.5\.1)?/i, { value: "ac3" });
+    parser.addHandler("audio", /DD5[. ]?1/i, { value: "dd5.1" });
+    parser.addHandler("audio", /AAC(?:[. ]?2[. ]0)?/, { value: "aac" });
 
     // Group
     parser.addHandler("group", /- ?([^\-. ]+)$/);
@@ -80,7 +74,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("language", /\bFLEMISH\b/, { type: "lowercase" });
     parser.addHandler("language", /\bGERMAN\b/, { type: "lowercase" });
     parser.addHandler("language", /\bDUBBED\b/, { type: "lowercase" });
-    parser.addHandler("language", /\b(ITA(?:LIAN)?|iTALiAN)\b/, { type: "lowercase" });
+    parser.addHandler("language", /\b(ITA(?:LIAN)?|iTALiAN)\b/, { value: "ita" });
     parser.addHandler("language", /\bFR(?:ENCH)?\b/, { type: "lowercase" });
     parser.addHandler("language", /\bTruefrench|VF(?:[FI])\b/i, { type: "lowercase" });
     parser.addHandler("language", /\bVOST(?:(?:F(?:R)?)|A)?|SUBFRENCH\b/i, { type: "lowercase" });

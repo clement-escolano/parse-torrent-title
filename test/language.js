@@ -54,7 +54,7 @@ describe("Parsing language", () => {
 
     it("should detect the italian language correctly", () => {
         const releaseName = "South.Park.S21E10.iTALiAN.FiNAL.AHDTV.x264-NTROPiC";
-        expect(parse(releaseName)).to.deep.include({ language: "italian" });
+        expect(parse(releaseName)).to.deep.include({ language: "ita" });
     });
 });
 
