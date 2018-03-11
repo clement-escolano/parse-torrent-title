@@ -26,5 +26,25 @@ describe("Parsing source", () => {
         const releaseName = "Brown Nation S01E05 1080p WEBRip x264-JAWN";
         expect(parse(releaseName)).to.deep.include({ source: "webrip" });
     });
+
+    it("should detect the TeleSync source correctly", () => {
+        const releaseName = "Star Wars The Last Jedi 2017 TeleSync AAC x264-MiniMe";
+        expect(parse(releaseName)).to.deep.include({ source: "telesync" });
+    });
+
+    it("should detect the DVDScr source correctly", () => {
+        const releaseName = "The.Shape.of.Water.2017.DVDScr.XVID.AC3.HQ.Hive-CM8";
+        expect(parse(releaseName)).to.deep.include({ source: "dvdscr" });
+    });
+
+    it("should detect the PPVRip source correctly", () => {
+        const releaseName = "Cloudy With A Chance Of Meatballs 2 2013 720p PPVRip x264 AAC-FooKaS";
+        expect(parse(releaseName)).to.deep.include({ source: "ppvrip" });
+    });
+
+    it("should detect the WEBMux source correctly", () => {
+        const releaseName = "The.OA.1x08.L.Io.Invisibile.ITA.WEBMux.x264-UBi.mkv";
+        expect(parse(releaseName)).to.deep.include({ source: "webmux" });
+    });
 });
 
