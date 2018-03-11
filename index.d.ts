@@ -3,6 +3,7 @@ declare namespace ParseTorrentTitle {
     interface ParserOptions {
         skipIfAlreadyFound?: boolean;
         type?: string;
+        value?: string;
     }
 
     interface ParserResult {
