@@ -36,7 +36,7 @@ function createHandlerFromRegExp(name, regExp, options) {
         const [rawMatch, cleanMatch] = match || [];
 
         if (rawMatch) {
-            result[name] = transformer(cleanMatch || rawMatch);
+            result[name] = options.value || transformer(cleanMatch || rawMatch);
             return match.index;
         }
 
