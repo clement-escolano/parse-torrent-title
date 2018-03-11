@@ -41,5 +41,10 @@ describe("Parsing audio", () => {
         const releaseName = "Tempete 2016-TrueFRENCH-TVrip-H264-mp3";
         expect(parse(releaseName)).to.deep.include({ audio: "mp3" });
     });
+
+    it("should detect the MD audio correctly", () => {
+        const releaseName = "Detroit.2017.BDRip.MD.GERMAN.x264-SPECTRE";
+        expect(parse(releaseName)).to.deep.include({ audio: "md" });
+    });
 });
 
