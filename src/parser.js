@@ -19,9 +19,9 @@ function createHandlerFromRegExp(name, regExp, options) {
         transformer = input => input;
     } else if (options.type.toLowerCase() === "lowercase") {
         transformer = input => input.toLowerCase();
-    } else if (options.type.toLowerCase().substr(0, 4) === "bool") {
+    } else if (options.type.toLowerCase().slice(0, 4) === "bool") {
         transformer = () => true;
-    } else if (options.type.toLowerCase().substr(0, 3) === "int") {
+    } else if (options.type.toLowerCase().slice(0, 3) === "int") {
         transformer = input => parseInt(input, 10);
     } else {
         transformer = input => input;
@@ -101,12 +101,13 @@ class Parser {
 
         for (const handler of this.handlers) {
             const matchIndex = handler({ title, result });
+
             if (matchIndex && matchIndex < endOfTitle) {
                 endOfTitle = matchIndex;
             }
         }
 
-        result.title = cleanTitle(title.substr(0, endOfTitle));
+        result.title = cleanTitle(title.slice(0, endOfTitle));
 
         return result;
     }
