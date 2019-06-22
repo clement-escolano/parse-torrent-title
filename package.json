@@ -23,7 +23,7 @@
   "author": "Clément Escolano <clement.escolano@icloud.com>",
   "license": "MIT",
   "engines": {
-    "node": ">=6"
+    "node": ">=8"
   },
   "types": "index.d.ts",
   "devDependencies": {
