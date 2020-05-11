@@ -64,4 +64,5 @@ declare module "parse-torrent-title" {
     export const parse: ParseTorrentTitle.ParseFunction;
     export const addHandler: ParseTorrentTitle.AddHandlerFunction;
     export const addDefaults: ParseTorrentTitle.AddDefaultsFunction;
+    export interface ParserResult extends ParseTorrentTitle.ParserResult { }
 }

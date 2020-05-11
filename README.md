@@ -6,7 +6,7 @@ This package helps you extract information from a torrent name such as language,
 
 ## Installation
 
-You can install it using npm: 
+You can install it using npm:
 ```bash
 npm install parse-torrent-title
 ```
@@ -24,7 +24,7 @@ console.log(information.season);     // 1
 console.log(information.episode);    // 1
 console.log(information.resolution); // 720p
 console.log(information.codec);      // x264
-console.log(information.source);     // HDTV 
+console.log(information.source);     // HDTV
 console.log(information.group);      // CTU
 ```
 
@@ -45,7 +45,7 @@ console.log(information.part); // 1
 ```
 
 If you want to keep only a part of the matched regular expression, you should use capturing groups
-[explained here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp). 
+[explained here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
 
 For regular expressions, the following options are available:
 
@@ -99,3 +99,24 @@ const parser = new Parser();
 addDefaults(parser); // parser is now ready
 ```
 
+## Usage with TypeScript
+
+When you add a custom handler, its property is not included in the `ParserResult` object returned by the `.parse()` method. To populate the property, you must *Augment* the interface, i.e.:
+
+```ts
+import ptt, { ParserResult } from 'parse-torrent-title'
+
+ptt.addHandler('part', /(?:Part|CD)[. ]?([0-9])/i, { type: 'integer' })
+
+// Type declaration can be in any .ts file or in your types folder:
+//   src/@types/parse-torrent-title/index.d.ts
+declare module 'parse-torrent-title' {
+  interface ParserResult {
+    part?: number;
+  }
+}
+
+// The cast is important to override the original returned type
+const result = ptt.parse(fileBaseName) as ParserResult
+console.log(result.part) // 1
+```
