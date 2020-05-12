@@ -6,7 +6,7 @@ declare namespace ParseTorrentTitle {
         value?: string;
     }
 
-    interface ParserResult {
+    interface DefaultParserResult {
         title: string;
         year?: number;
         resolution?: string;
@@ -29,38 +29,39 @@ declare namespace ParseTorrentTitle {
         language?: string;
     }
 
-    interface Handler {
+    interface Handler<ParserResult = DefaultParserResult> {
         (input: { title: string, result: ParserResult }): void;
         (input: { title: string }): void;
         (input: { result: ParserResult }): void;
     }
 
-    interface ParseFunction {
+    interface ParseFunction<ParserResult = DefaultParserResult> {
         (title: string): ParserResult;
     }
 
-    interface AddHandlerFunction {
+    interface AddHandlerFunction<ParserResult = DefaultParserResult> {
         (handlerName: string, handler: RegExp, options?: ParserOptions): void;
-        (handlerName: string, handler: Handler): void;
-        (handler: Handler): void;
+        (handlerName: string, handler: Handler<ParserResult>): void;
+        (handler: Handler<ParserResult>): void;
     }
 
     interface AddDefaultsFunction {
         (parser: Parser): void;
     }
 
-    class Parser {
+    class Parser<ParserResult = DefaultParserResult> {
 
         constructor();
 
-        addHandler: AddHandlerFunction;
-        parse: ParseFunction;
+        addHandler: AddHandlerFunction<ParserResult>;
+        parse: ParseFunction<ParserResult>;
     }
 }
 
 declare module "parse-torrent-title" {
 
-    export class Parser extends ParseTorrentTitle.Parser { }
+    export interface DefaultParserResult extends ParseTorrentTitle.DefaultParserResult { }
+    export class Parser<ParserResult = DefaultParserResult> extends ParseTorrentTitle.Parser<ParserResult> { }
     export const parse: ParseTorrentTitle.ParseFunction;
     export const addHandler: ParseTorrentTitle.AddHandlerFunction;
     export const addDefaults: ParseTorrentTitle.AddDefaultsFunction;

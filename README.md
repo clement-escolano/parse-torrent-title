@@ -6,7 +6,7 @@ This package helps you extract information from a torrent name such as language,
 
 ## Installation
 
-You can install it using npm: 
+You can install it using npm:
 ```bash
 npm install parse-torrent-title
 ```
@@ -14,7 +14,7 @@ You should use Node 8.0 or higher to use this package.
 
 ## Usage
 
-A simple usage is as follow:
+A simple usage is as follows:
 ```javascript
 const ptt = require("parse-torrent-title");
 const information = ptt.parse("Game.of.Thrones.S01E01.720p.HDTV.x264-CTU");
@@ -24,7 +24,7 @@ console.log(information.season);     // 1
 console.log(information.episode);    // 1
 console.log(information.resolution); // 720p
 console.log(information.codec);      // x264
-console.log(information.source);     // HDTV 
+console.log(information.source);     // HDTV
 console.log(information.group);      // CTU
 ```
 
@@ -45,7 +45,7 @@ console.log(information.part); // 1
 ```
 
 If you want to keep only a part of the matched regular expression, you should use capturing groups
-[explained here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp). 
+[explained here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp).
 
 For regular expressions, the following options are available:
 
@@ -81,9 +81,9 @@ const information2 = ptt.parse("[REQ] Harry Potter And The Prisoner Of Azkaban 2
 console.log(information2.isHarryPotterRelated); // true
 ```
 
-## Multiple parsers
+### Multiple parsers
 
-You may want several different parsers within the same project.
+You may want several parsers within the same project.
 To do that, you can simply create new parsers:
 ```javascript
 const { Parser } = require("parse-torrent-title");
@@ -99,3 +99,32 @@ const parser = new Parser();
 addDefaults(parser); // parser is now ready
 ```
 
+### Usage with TypeScript
+
+If you add new properties with `addHandler` in TypeScript, the result type `DefaultParserResult` will not be updated,
+and you will encounter a TS2339 error.
+
+To prevent this error and have autocomplete,
+you should create a `ParserResult` interface with the expected properties.
+It is possible to extend the `DefaultParserResult` interface to get all the default properties.
+Then, create a new `Parser` object using the above interface.
+Finally, use the `parse` function as usual.
+
+Example:
+
+```ts
+import { Parser, DefaultParserResult, addDefaults } from "parse-torrent-title";
+
+interface ParserResult extends DefaultParserResult {
+    part?: number;
+}
+
+const parser = new Parser<ParserResult>();
+addDefaults(parser);
+parser.addHandler('part', /(?:Part|CD)[. ]?([0-9])/i, { type: 'integer' })
+const parse = parser.parse;
+
+const result = parse('Watergate.2018.Part1.DOC.SUBFRENCH.1080p.HDTV.H264-ELEARNiNG');
+console.log(result.year); // 2018 - it works as before
+console.log(result.part); // 1 - `part` is now a known property of the `result` object
+```
