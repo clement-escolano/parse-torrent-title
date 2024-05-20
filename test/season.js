@@ -31,4 +31,10 @@ describe("Parsing season", () => {
 
         expect(parse(releaseName)).to.deep.include({ season: 5 });
     });
+
+    it("should detect season packs", () => {
+        const releaseName = "My Adventures with Superman - 1xAll - Complete (Season 720p .mkv WEB)";
+
+        expect(parse(releaseName)).to.deep.include({ season: 1 });
+    });
 });
