@@ -37,4 +37,10 @@ describe("Parsing episode", () => {
 
         expect(parse(releaseName)).to.deep.include({ episode: 14 });
     });
+
+    it("should not identify an episode if the string 'ep' is followed by a year rather than an episode number", () => {
+        const releaseName = "The Keep 1983 1080p Blu-ray AVC DTS-HD MA 2.0-FULLBRUTALiTY";
+
+        expect(parse(releaseName)).to.not.deep.include({ episode: 198 });
+    });
 });
