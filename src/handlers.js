@@ -8,7 +8,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("resolution", /(4k)/i, { type: "lowercase" });
 
     // Extended
-    parser.addHandler("extended", /EXTENDED/, { type: "boolean" });
+    parser.addHandler("extended", /EXTENDED(?:[\s.]CUT)?/i, { type: "boolean" });
 
     // Convert
     parser.addHandler("convert", /CONVERT/, { type: "boolean" });
