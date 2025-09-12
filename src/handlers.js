@@ -95,7 +95,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("bitdepth", /\b(8|10|12)[-\s.]?bit\b/i, { type: "integer" });
 
     // Group
-    parser.addHandler("group", /- ?([^\-. )[]+)(?:\[.*\])?\)?$/);
+    parser.addHandler("group", /- ?\(?([^\-. )[]+)\)?(?:\[.*\])?\)?$/);
 
     // Tracker
     parser.addHandler("tracker", /[^\-. )]+\[([^\]]+)\]$/);

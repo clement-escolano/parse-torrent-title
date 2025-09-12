@@ -20,6 +20,12 @@ describe("Parsing group", () => {
         expect(parse(releaseName)).to.deep.include({ group: "YIFY" });
     });
 
+    it("should detect the YIFY group in brackets correctly", () => {
+        const releaseName = "Hercules (2014) 1080p BrRip H264 - (YIFY)";
+
+        expect(parse(releaseName)).to.deep.include({ group: "YIFY" });
+    });
+
     it("should detect when there is no group", () => {
         const releaseName = "Western - L'homme qui n'a pas d'étoile-1955.Multi.DVD9";
 
