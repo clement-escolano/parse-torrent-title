@@ -95,7 +95,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     });
 
     // Bit depth
-    parser.addHandler("bitdepth", /\b(8|10|12)[-\s.]?bit\b/i, { type: "integer" });
+    parser.addHandler("bitdepth", /\b(8|10|12|16|24)[-\s.]?bits?\b/i, { type: "integer" });
 
     // Group
     parser.addHandler("group", /- ?\(?([^\-. )[]+)\)?(?:\[.*\])?\)?$/);
