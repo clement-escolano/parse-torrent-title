@@ -67,6 +67,7 @@ exports.addDefaults = /** @type Parser */ parser => {
 
     // Service
     parser.addHandler("service", /\bNFLX|NF\b/i, { value: "NFLX" });
+    parser.addHandler("service", /\bDSNP\b/i, { type: "uppercase" });
     parser.addHandler("service", /\bAMZN\b/i, { type: "uppercase" });
 
     // Codec
