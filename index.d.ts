@@ -16,6 +16,7 @@ declare namespace ParseTorrentTitle {
         repack?: boolean;
         convert?: boolean;
         hardcoded?: boolean;
+        remux?: boolean;
         retail?: boolean;
         remastered?: boolean;
         region?: string;
