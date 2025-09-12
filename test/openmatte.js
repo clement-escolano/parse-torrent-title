@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const parse = require("../index").parse;
 
-describe("Parsing extended", () => {
+describe("Parsing openmatte", () => {
     it("should detect if the release is Open Matte", () => {
         const releaseName = "Harry Potter and the Goblet of Fire (2005) Open Matte (1080p AMZN WEB-DL x265 HEVC 10bit AAC 5.1 MONOLITH)";
 

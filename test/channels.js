@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const parse = require("../index").parse;
 
-describe("Parsing season", () => {
+describe("Parsing channels", () => {
     it("should detect 5.1 channels correctly", () => {
         const releaseName = "A Beautiful Mind (2001) [1080p amzn web-dl] - h264 ddp 5.1 -  NiSHKRiY0";
 

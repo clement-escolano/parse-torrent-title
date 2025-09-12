@@ -1,7 +1,7 @@
 const { expect } = require("chai");
 const parse = require("../index").parse;
 
-describe("Parsing group", () => {
+describe("Parsing service", () => {
     it("should detect the AMZN service correctly", () => {
         const releaseName = "A.Beautiful.Mind.2001.1080p.AMZN.WEB-DL.DDP5.1.H.264-NiSHKRiY0";
 
