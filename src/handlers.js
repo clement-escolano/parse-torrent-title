@@ -87,7 +87,10 @@ exports.addDefaults = /** @type Parser */ parser => {
     });
 
     // Group
-    parser.addHandler("group", /- ?([^\-. ]+)$/);
+    parser.addHandler("group", /- ?([^\-. )\[]+)(?:\[.*\])?\)?$/);
+
+    // Tracker
+    parser.addHandler("tracker", /[^\-. )]+\[([^\]]+)\]$/);
 
     // Season
     parser.addHandler("season", /([0-9]{1,2})xall/i, { type: "integer" });
