@@ -24,6 +24,7 @@ declare namespace ParseTorrentTitle {
         source?: string;
         codec?: string;
         audio?: string;
+        channels?: number;
         group?: string;
         season?: number;
         episode?: number;
