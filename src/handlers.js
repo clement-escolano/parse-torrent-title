@@ -16,6 +16,9 @@ exports.addDefaults = /** @type Parser */ parser => {
     // Hardcoded
     parser.addHandler("hardcoded", /HC|HARDCODED/, { type: "boolean" });
 
+    // Remux
+    parser.addHandler("remux", /REMUX/i, { type: "boolean" });
+
     // Proper
     parser.addHandler("proper", /(?:REAL.)?PROPER/, { type: "boolean" });
 
