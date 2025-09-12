@@ -86,6 +86,9 @@ exports.addDefaults = /** @type Parser */ parser => {
         transform: (match) => parseFloat(match[1])
     });
 
+    // Bit depth
+    parser.addHandler("bitdepth", /\b(8|10|12)[-\s.]?bit\b/i, { type: "integer" });
+
     // Group
     parser.addHandler("group", /- ?([^\-. )\[]+)(?:\[.*\])?\)?$/);
 
