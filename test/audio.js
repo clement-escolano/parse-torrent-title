@@ -9,9 +9,15 @@ describe("Parsing audio", () => {
     });
 
     it("should detect the DTS-HD audio correctly", () => {
-        const releaseName = "Gold 2016 1080p BluRay DTS-HD MA 5 1 x264-HDH";
+        const releaseName = "Gold 2016 1080p BluRay DTS-HD 5 1 x264-HDH";
 
         expect(parse(releaseName)).to.deep.include({ audio: "dts-hd" });
+    });
+
+    it("should detect the DTS-HD-MA audio correctly", () => {
+        const releaseName = "Gold 2016 1080p BluRay DTS-HD MA 5 1 x264-HDH";
+
+        expect(parse(releaseName)).to.deep.include({ audio: "dts-hd-ma" });
     });
 
     it("should detect the AAC audio correctly", () => {
@@ -30,6 +36,12 @@ describe("Parsing audio", () => {
         const releaseName = "Jimmy Kimmel 2017 05 03 720p HDTV DD5 1 MPEG2-CTL";
 
         expect(parse(releaseName)).to.deep.include({ audio: "dd" });
+    });
+
+    it("should detect the ddp audio correctly", () => {
+        const releaseName = "Jimmy Kimmel 2017 05 03 720p HDTV DDP MPEG2-CTL";
+
+        expect(parse(releaseName)).to.deep.include({ audio: "ddp" });
     });
 
     it("should detect the AC3 audio correctly", () => {

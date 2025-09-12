@@ -61,7 +61,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("source", /\bWEB-?DL\b/i, { type: "lowercase" });
     parser.addHandler("source", /\bWEB-?Rip\b/i, { type: "lowercase" });
     parser.addHandler("source", /\b(?:DL|WEB|BD|BR)MUX\b/i, { type: "lowercase" });
-    parser.addHandler("source", /\b\.(WEB)\.\b/i, { type: "lowercase" });
+    parser.addHandler("source", /\b[\s.](WEB)[\s.]\b/i, { type: "lowercase" });
     parser.addHandler("source", /\b(DivX|XviD)\b/, { type: "lowercase" });
     parser.addHandler("source", /HDTV/i, { type: "lowercase" });
 
@@ -77,7 +77,8 @@ exports.addDefaults = /** @type Parser */ parser => {
     });
 
     // Audio
-    parser.addHandler("audio", /MD|MP3|mp3|FLAC|Atmos|DTS(?:-HD(?:[-.]MA)?)?|TrueHD/, { type: "lowercase" });
+    parser.addHandler("audio", /DTS-HD[\s-.]MA/, { value: "dts-hd-ma" });
+    parser.addHandler("audio", /MD|MP3|mp3|FLAC|Atmos|DTS(?:-HD)?|TrueHD/, { type: "lowercase" });
     parser.addHandler("audio", /Dual[- ]Audio/i, { type: "lowercase" });
     parser.addHandler("audio", /EAC-?3(?:\.5\.1)?/i, { value: "eac3" });
     parser.addHandler("audio", /AC-?3(?:\.5\.1)?/i, { value: "ac3" });
@@ -86,7 +87,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("audio", /AAC(?:[. ]?2[. ]0)?/, { value: "aac" });
 
     // Channels
-    parser.addHandler("channels", /\d+[.\s](?:1|0)\b/i, { 
+    parser.addHandler("channels", /\d+[.\s](?:1|0)\b/i, {
         transform: (match) => parseFloat(match[1])
     });
 
