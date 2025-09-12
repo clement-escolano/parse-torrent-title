@@ -44,6 +44,12 @@ describe("Parsing audio", () => {
         expect(parse(releaseName)).to.deep.include({ audio: "ddp" });
     });
 
+    it("should detect the dd+ audio correctly", () => {
+        const releaseName = "Jimmy Kimmel 2017 05 03 720p HDTV DD+ MPEG2-CTL";
+
+        expect(parse(releaseName)).to.deep.include({ audio: "ddp" });
+    });
+
     it("should detect the AC3 audio correctly", () => {
         const releaseName = "A Dog's Purpose 2016 BDRip 720p X265 Ac3-GANJAMAN";
 
