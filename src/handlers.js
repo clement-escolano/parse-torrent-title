@@ -70,6 +70,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     });
 
     // Audio
+    parser.addHandler("audio", /DTS-HD\.MA(?:\.(?:5\.1))?/i, { value: "dts-hd-ma-5.1" });
     parser.addHandler("audio", /MD|MP3|mp3|FLAC|Atmos|DTS(?:-HD)?|TrueHD/, { type: "lowercase" });
     parser.addHandler("audio", /Dual[- ]Audio/i, { type: "lowercase" });
     parser.addHandler("audio", /AC-?3(?:\.5\.1)?/i, { value: "ac3" });
