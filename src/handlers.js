@@ -68,11 +68,18 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("source", /HDTV/i, { type: "lowercase" });
 
     // Service
-    parser.addHandler("service", /\bNFLX|NF\b/i, { value: "NFLX" });
-    parser.addHandler("service", /\bATVP\b/i, { value: "ATVP" });
+    parser.addHandler("service", /\bAMZN|Amazon\b/i, { value: "AMZN" });
+    parser.addHandler("service", /\bATVP\b/i, { type: "uppercase" });
+    parser.addHandler("service", /\bBNGE\b/i, { type: "uppercase" });
+    parser.addHandler("service", /\bDLWP\b/i, { type: "uppercase" });
     parser.addHandler("service", /\bDSNP\b/i, { type: "uppercase" });
-    parser.addHandler("service", /\bAMZN|Amazon\b/i, { type: "uppercase" });
+    parser.addHandler("service", /\bFDNG\b/i, { type: "uppercase" });
     parser.addHandler("service", /\bHULU\b/i, { type: "uppercase" });
+    parser.addHandler("service", /\bMAX\b/i, { type: "uppercase" });
+    parser.addHandler("service", /\bNFLX|NF\b/i, { value: "NFLX" });
+    parser.addHandler("service", /\bPCOK\b/i, { type: "uppercase" });
+    parser.addHandler("service", /\bROKU\b/i, { type: "uppercase" });
+    parser.addHandler("service", /\bSTAN\b/i, { type: "uppercase" });
 
     // Codec
     parser.addHandler("codec", /dvix|mpeg2|divx|xvid|[xh][-. ]?26[45]|avc|hevc/i, { type: "lowercase" });
