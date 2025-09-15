@@ -136,7 +136,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("language", /\bFLEMISH\b/, { type: "lowercase" });
     parser.addHandler("language", /\bGERMAN\b/, { type: "lowercase" });
     parser.addHandler("language", /\bDUBBED\b/, { type: "lowercase" });
-    parser.addHandler("language", /\b(ITA(?:LIAN)?|iTALiAN)\b/, { value: "ita" });
+    parser.addHandler("language", /\b(ITA(?:LIAN)?|iT(?:A(?:LiAN)?)?)\b/, { value: "ita" });
     parser.addHandler("language", /\bFR(?:ENCH)?\b/, { type: "lowercase" });
     parser.addHandler("language", /\bTruefrench|VF(?:[FI])\b/i, { type: "lowercase" });
     parser.addHandler("language", /\bVOST(?:(?:F(?:R)?)|A)?|SUBFRENCH\b/i, { type: "lowercase" });
