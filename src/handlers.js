@@ -13,7 +13,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("extended", /EXTENDED(?:[\s.]CUT)?/i, { type: "boolean" });
 
     // Open Matte
-    parser.addHandler("openmatte", /OPEN MATTE/i, { type: "boolean" });
+    parser.addHandler("openmatte", /OPEN[. ]MATTE/i, { type: "boolean" });
 
     // Convert
     parser.addHandler("convert", /CONVERT/, { type: "boolean" });
