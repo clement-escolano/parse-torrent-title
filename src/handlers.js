@@ -50,7 +50,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("source", /\b(?:HD-?)?T(?:ELE)?S(?:YNC)?\b/i, { value: "telesync" });
     parser.addHandler("source", /\bHD-?Rip\b/i, { type: "lowercase" });
     parser.addHandler("source", /\bBRRip\b/i, { type: "lowercase" });
-    parser.addHandler("source", /\bBDRip\b/i, { type: "lowercase" });
+    parser.addHandler("source", /\bBDRip|BluRayRip\b/i, { value: "bdrip" });
     parser.addHandler("source", /\bDVDRip\b/i, { type: "lowercase" });
     parser.addHandler("source", /\bDVD(?:R[0-9])?\b/i, { value: "dvd" });
     parser.addHandler("source", /\bDVDscr\b/i, { type: "lowercase" });
