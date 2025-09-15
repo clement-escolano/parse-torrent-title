@@ -124,6 +124,7 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("language", /\bENG\b/i, { type: "lowercase" });
     parser.addHandler("language", /\bNL\b/, { type: "lowercase" });
     parser.addHandler("language", /\bNORDiC\b/, { type: "lowercase" });
+    parser.addHandler("language", /\bViETNAM\b/, { type: "lowercase" });
     parser.addHandler("language", /\bFLEMISH\b/, { type: "lowercase" });
     parser.addHandler("language", /\bGERMAN\b/, { type: "lowercase" });
     parser.addHandler("language", /\bDUBBED\b/, { type: "lowercase" });
