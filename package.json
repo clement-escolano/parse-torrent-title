@@ -1,6 +1,6 @@
 {
   "name": "parse-torrent-title",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "Parse torrent title to extract useful information",
   "main": "index.js",
   "keywords": [
