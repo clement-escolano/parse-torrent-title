@@ -12,6 +12,7 @@ declare namespace ParseTorrentTitle {
         resolution?: string;
         extended?: boolean;
         unrated?: boolean;
+        openmatte?: boolean;
         proper?: boolean;
         repack?: boolean;
         convert?: boolean;
@@ -22,9 +23,13 @@ declare namespace ParseTorrentTitle {
         region?: string;
         container?: string;
         source?: string;
+        service?: string;
         codec?: string;
         audio?: string;
+        channels?: number;
+        bitdepth?: number;
         group?: string;
+        tracker?: string;
         season?: number;
         episode?: number;
         language?: string;

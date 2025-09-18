@@ -27,32 +27,12 @@
   },
   "types": "index.d.ts",
   "devDependencies": {
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.35.0",
     "chai": "^4.2.0",
-    "eslint": "^6.0.0",
-    "eslint-config-eslint": "^5.0.1",
+    "eslint": "^9.35.0",
     "eslint-plugin-node": "^9.1.0",
-    "mocha": "^7.1.2"
-  },
-  "eslintConfig": {
-    "extends": "eslint",
-    "env": {
-      "es6": true,
-      "mocha": true,
-      "node": true
-    },
-    "rules": {
-      "comma-dangle": [
-        "error",
-        "only-multiline"
-      ],
-      "newline-after-var": "off",
-      "no-param-reassign": "off",
-      "require-jsdoc": "off",
-      "strict": [
-        "error",
-        "never"
-      ],
-      "valid-jsdoc": "off"
-    }
+    "globals": "^16.4.0",
+    "mocha": "^11.7.2"
   }
 }

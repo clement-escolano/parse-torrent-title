@@ -23,6 +23,8 @@ function createHandlerFromRegExp(name, regExp, options) {
         transformer = () => true;
     } else if (options.type.toLowerCase().slice(0, 3) === "int") {
         transformer = input => parseInt(input, 10);
+    } else if (options.type.toLowerCase().slice(0, 5) === "float") {
+        transformer = input => parseFloat(input);
     } else {
         transformer = input => input;
     }

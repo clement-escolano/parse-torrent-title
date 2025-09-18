@@ -32,6 +32,12 @@ describe("Parsing source", () => {
         expect(parse(releaseName)).to.deep.include({ source: "webrip" });
     });
 
+    it("should detect the Web source correctly", () => {
+        const releaseName = "Brown Nation S01E05 1080p WEB x264-JAWN";
+
+        expect(parse(releaseName)).to.deep.include({ source: "web" });
+    });
+
     it("should detect the TeleSync source correctly", () => {
         const releaseName = "Star Wars The Last Jedi 2017 TeleSync AAC x264-MiniMe";
 

@@ -8,6 +8,12 @@ describe("Parsing extended", () => {
         expect(parse(releaseName)).to.deep.include({ extended: true });
     });
 
+    it("should detect if the extended field is 2 words", () => {
+        const releaseName = "Have I Got News For You S53E02 EXTENDED CUT 720p HDTV x264-QPEL";
+
+        expect(parse(releaseName)).to.deep.include({ extended: true });
+    });
+
     it("should not detect extended when the release is not flagged as such", () => {
         const releaseName = "Better.Call.Saul.S03E04.CONVERT.720p.WEB.h264-TBS";
 
