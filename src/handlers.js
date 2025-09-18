@@ -124,9 +124,9 @@ exports.addDefaults = /** @type Parser */ parser => {
     parser.addHandler("season", /S([0-9]{1,2})(?![0-9])/i, { type: "integer" });
 
     // Episode
-    parser.addHandler("episode", /S[0-9]{1,2} ?E([0-9]{1,2})/i, { type: "integer" });
-    parser.addHandler("episode", /[0-9]{1,2}x([0-9]{1,2})/, { type: "integer" });
-    parser.addHandler("episode", /[ée]p(?:isode)?[. _-]?([0-9]{1,3})/i, { type: "integer" });
+    parser.addHandler("episode", /S[0-9]{1,2} ?E([0-9]{1,5})/i, { type: "integer" });
+    parser.addHandler("episode", /[0-9]{1,2}x([0-9]{1,5})/, { type: "integer" });
+    parser.addHandler("episode", /[ée]p(?:isode)?[. _-]?([0-9]{1,5})/i, { type: "integer" });
 
     // Language
     parser.addHandler("language", /\bRUS\b/i, { type: "lowercase" });

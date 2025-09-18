@@ -37,4 +37,16 @@ describe("Parsing episode", () => {
 
         expect(parse(releaseName)).to.deep.include({ episode: 14 });
     });
+
+    it("should detect episode with longer episode numbers", () => {
+        const releaseName = "Taarak Mehta Ka Ooltah Chashmah S01E381 2008 DtKCs-tt1708446";
+
+        expect(parse(releaseName)).to.deep.include({ episode: 381 });
+    });
+
+    it("should detect episode with longer episode numbers", () => {
+        const releaseName = "Ek.Mahanayak.-.Dr.B.R.Ambedkar.S01E1135.Bhims.Loved.Ones.Bid.Him.Adieu.1080p.tt12492338.ZEE5.WEB-DL.AAC2.0.H.264-WADU";
+
+        expect(parse(releaseName)).to.deep.include({ episode: 1135 });
+    });
 });
