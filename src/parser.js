@@ -2,7 +2,7 @@ function extendOptions(options) {
     options = options || {};
 
     const defaultOptions = {
-        skipIfAlreadyFound: true,
+        skipIfAlreadyFound: false,
         type: "string",
     };
 
@@ -38,7 +38,11 @@ function createHandlerFromRegExp(name, regExp, options) {
         const [rawMatch, cleanMatch] = match || [];
 
         if (rawMatch) {
-            result[name] = options.value || transformer(cleanMatch || rawMatch);
+            const value = options.value || transformer(cleanMatch || rawMatch);
+            if (!options.skipIfAlreadyFound && name in result && result[name] !== value) {
+                result[`${name}list`] = [...new Set([...result[`${name}list`] ?? [], result[name], value])]
+            }
+            if (!(name in result))  result[name] = value;
             return match.index;
         }
 
@@ -46,12 +50,11 @@ function createHandlerFromRegExp(name, regExp, options) {
     }
 
     handler.handlerName = name;
-
     return handler;
 }
 
 function cleanTitle(rawTitle) {
-    let cleanedTitle = rawTitle;
+    let cleanedTitle = rawTitle.replace(/^\.+|\.+$/g, '');
 
     if (cleanedTitle.indexOf(" ") === -1 && cleanedTitle.indexOf(".") !== -1) {
         cleanedTitle = cleanedTitle.replace(/\./g, " ");

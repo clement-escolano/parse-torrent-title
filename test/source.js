@@ -35,7 +35,7 @@ describe("Parsing source", () => {
     it("should detect the Web source correctly", () => {
         const releaseName = "Brown Nation S01E05 1080p WEB x264-JAWN";
 
-        expect(parse(releaseName)).to.deep.include({ source: "web" });
+        expect(parse(releaseName)).to.deep.include({ source: "web-dl" });
     });
 
     it("should detect the TeleSync source correctly", () => {

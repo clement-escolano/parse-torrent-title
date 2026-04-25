@@ -25,4 +25,10 @@ describe("Paring year", () => {
 
         expect(parse(releaseName)).to.deep.include({ year: 2009 });
     });
+
+    it("should not detect the year", () => {
+        const releaseName = "Friends.S05.1080p.AMZN.WEB-DL.DDP.5.1.H.264-EDGE2020";
+
+        expect(parse(releaseName)).to.not.have.property("year");
+    });
 });

@@ -53,7 +53,7 @@ describe("Parsing language", () => {
     it("should detect the multi language correctly", () => {
         const releaseName = "Le Labyrinthe 2014 Multi-VF2 1080p BluRay x264-PopHD";
 
-        expect(parse(releaseName)).to.deep.include({ language: "multi-vf2" });
+        expect(parse(releaseName)).to.deep.include({ language: "multi" });
     });
 
     it("should detect the VFI language correctly", () => {

@@ -20,6 +20,12 @@ describe("Parsing resolution", () => {
         expect(parse(releaseName)).to.deep.include({ resolution: "720p" });
     });
 
+    it("should detect the 1080 resolution without scan type correctly", () => {
+        const releaseName = "Jurassic World Dominion 2022 1080 hdr hevc-d3g";
+
+        expect(parse(releaseName)).to.deep.include({ resolution: "1080p" });
+    });
+
     it("should detect the 4k resolution correctly", () => {
         const releaseName = "The Smurfs 2 2013 COMPLETE FULL BLURAY UHD (4K) - IPT EXCLUSIVE";
 

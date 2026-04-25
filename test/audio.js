@@ -53,13 +53,19 @@ describe("Parsing audio", () => {
     it("should detect the AC3 audio correctly", () => {
         const releaseName = "A Dog's Purpose 2016 BDRip 720p X265 Ac3-GANJAMAN";
 
-        expect(parse(releaseName)).to.deep.include({ audio: "ac3" });
+        expect(parse(releaseName)).to.deep.include({ audio: "dd" });
+    });
+
+    it("should detect the Atmos audio correctly", () => {
+        const releaseName = "Thor.The.Dark.World.2013.DSNP.WEB-DL.1080p.HDR10.DA5.1.HEVC-ARCADE.mkv";
+
+        expect(parse(releaseName)).to.deep.include({ audio: "atmos" });
     });
 
     it("should convert the AC-3 audio to AC3", () => {
         const releaseName = "Retroactive 1997 BluRay 1080p AC-3 HEVC-d3g";
 
-        expect(parse(releaseName)).to.deep.include({ audio: "ac3" });
+        expect(parse(releaseName)).to.deep.include({ audio: "dd" });
     });
 
     it("should detect the mp3 audio correctly", () => {

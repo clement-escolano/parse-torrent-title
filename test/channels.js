@@ -5,7 +5,7 @@ describe("Parsing channels", () => {
     it("should detect 5.1 channels correctly", () => {
         const releaseName = "A Beautiful Mind (2001) [1080p amzn web-dl] - h264 ddp 5.1 -  NiSHKRiY0";
 
-        expect(parse(releaseName)).to.deep.include({ channels: "5.1" });
+        expect(parse(releaseName)).to.deep.include({ channels: 5.1 });
     });
 
     it("shouldn't detect when no channels", () => {

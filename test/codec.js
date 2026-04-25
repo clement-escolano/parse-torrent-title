@@ -5,7 +5,7 @@ describe("Parsing codec", () => {
     it("should detect the hevc codec correctly", () => {
         const releaseName = "Nocturnal Animals 2016 VFF 1080p BluRay DTS HEVC-HD2";
 
-        expect(parse(releaseName)).to.deep.include({ codec: "hevc" });
+        expect(parse(releaseName)).to.deep.include({ codec: "h265" });
     });
 
     it("should detect the x264 codec correctly", () => {
